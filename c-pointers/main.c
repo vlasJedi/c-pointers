@@ -61,7 +61,7 @@ int main(int count, char* argv[])
         return -1;
     }
     // this is wide char encoding so this is UTF-16 encoding
-    const char* testString = L"Привет";
+    const char* testString = L"пїЅпїЅпїЅпїЅпїЅпїЅ";
     fwprintf(fp, testString);
     fclose(fp);
 
@@ -161,34 +161,8 @@ void printByteIntAsHex(int number, char * base)
 
 }
 
-// Returns pointer to in memory string, should be free once not needed
-char* appendToString(char* baseString, char* appendix)
-{
-    // TODO need to clean up memory after each recursion
-    // allocate memory for two strings + null terminator
-    char* destStr = (char*)malloc(sizeof(char) * (strlen(baseString) + strlen(appendix) + 1));
-    strcpy(destStr, baseString);
-    strcat(destStr, appendix);
-    return destStr;
-}
 
-void convertToDiffBase(int number, int base, char** result, char * space)
-{
-    int mainPart = number / base;
-    int rest = number % base;
-    char appendix[2];
-    appendix[0] = *(space + rest);
-    appendix[1] = '\0';
-    *result = appendToString(*result, appendix);
-    if (mainPart == 0) {
-        return;
-    }
-    if (mainPart < base) {
-        appendix[0] = *(space + mainPart);
-        *result = appendToString(*result, appendix);
-        return;
-    }
-    convertToDiffBase(mainPart, base, result, space);
-};
+
+
 
 

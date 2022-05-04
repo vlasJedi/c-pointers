@@ -1,0 +1,1 @@
+gcc -o main.exe main.c -I ../../libs/headers -L ../../libs/obj -lhelper 
