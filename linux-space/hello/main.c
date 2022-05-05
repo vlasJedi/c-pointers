@@ -42,7 +42,7 @@ int runRepeaterWithExit()
         // new char available
         if ((newChar = (char)fgetc(stdin)) == '\n')
         {
-            printf(strcat(initString, "\n"));
+            printf("%s\n", initString);
             // put to 0 all string bytes
             memset(initString, 0, strlen(initString));
             index = 0;
@@ -78,6 +78,9 @@ void printFileInBinary(void)
     count = fread(&val, sizeof(val), 1, file);
     printf("Number of read bytes: %d\n", count);
     printf("Read from file: %d\n", val);
+    char ** tempString;
+    convertToDiffBase(val, 2, tempString, "01");
+    printf("As byte: %s\n", *tempString); 
     if (fclose(file) != 0) {
         printf("Failed closing ...\n");
         return;

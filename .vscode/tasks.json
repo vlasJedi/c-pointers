@@ -9,9 +9,9 @@
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}",
+                "${fileDirname}/${fileBasenameNoExtension}.exe",
                 "-I",
-                "${workspaceFolder}/libs/headers",
+                "${workspaceFolder}/libs/src",
                 "${workspaceFolder}/libs/src/helper\\.c"
             ],
             "options": {
